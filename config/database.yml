@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: deploy_development2
+  username: postgres
+  password: iam3489495
+  secret_key_base: 7bb4c2352d00fa0962beac490465e79a4228cd1a28f53a6d027ac5459ecb0e60b0f9dca5e47f9d8554018dc4bb4ed067ea637cd3fb581ceb90d6b75046817a38
+
+test:
+  <<: *default
+  database: deploy_test2
+  username: postgres
+  password: iam3489495
+
+production:
+  <<: *default
+  database: deploy_production2
+  username: deploy
+  password: <%= ENV["DEPLOY_DATABASE_PASSWORD"] %>
